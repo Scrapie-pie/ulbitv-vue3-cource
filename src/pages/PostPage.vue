@@ -70,23 +70,23 @@ export default {
     showDialog() {
       this.dialogVisible = true;
     },
-    // async fetchPosts() {
-    //   try {
-    //     this.isPostsLoading = true;
-    //     const response = await axios.get('https://jsonplaceholder.typicode.com/posts', {
-    //       params: {
-    //         _page: this.page,
-    //         _limit: this.limit
-    //       }
-    //     });
-    //     this.totalPages = Math.ceil(response.headers['x-total-count'] / this.limit);
-    //     this.posts = response.data;
-    //   } catch (e) {
-    //     alert('Ошибка')
-    //   } finally {
-    //     this.isPostsLoading = false;
-    //   }
-    // },
+    async fetchPosts() {
+      try {
+        this.isPostsLoading = true;
+        const response = await axios.get('https://jsonplaceholder.typicode.com/posts', {
+          params: {
+            _page: this.page,
+            _limit: this.limit
+          }
+        });
+        this.totalPages = Math.ceil(response.headers['x-total-count'] / this.limit);
+        this.posts = response.data;
+      } catch (e) {
+        alert('Ошибка')
+      } finally {
+        this.isPostsLoading = false;
+      }
+    },
 
     async loadMorePosts() {
       try {
